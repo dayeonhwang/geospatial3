@@ -7,11 +7,11 @@
 import numpy as np
 
 class TileSystem:
-    EarthRadius = 6378137;
-    MinLatitude = -85.05112878;
-    MaxLatitude = 85.05112878;
-    MinLongitude = -180;
-    MaxLongitude = 180;
+    EarthRadius = 6378137.
+    MinLatitude = -85.05112878
+    MaxLatitude = 85.05112878
+    MinLongitude = -180
+    MaxLongitude = 180
 
 
     /// <summary>
@@ -120,8 +120,8 @@ class TileSystem:
     /// <param name="tileX">Output parameter receiving the tile X coordinate.</param>
     /// <param name="tileY">Output parameter receiving the tile Y coordinate.</param>
     PixelXYToTileXY(self, pixelX, pixelY):
-        tileX = pixelX / 256;
-        tileY = pixelY / 256;
+        tileX = pixelX / 256
+        tileY = pixelY / 256
 
         return int(tileX), int(tileY)
 
@@ -136,8 +136,8 @@ class TileSystem:
     /// <param name="pixelX">Output parameter receiving the pixel X coordinate.</param>
     /// <param name="pixelY">Output parameter receiving the pixel Y coordinate.</param>
     TileXYToPixelXY(self, tileX, tileY):
-        pixelX = tileX * 256;
-        pixelY = tileY * 256;
+        pixelX = tileX * 256
+        pixelY = tileY * 256
 
         return int(pixelX), int(pixelY)
 
@@ -172,7 +172,7 @@ class TileSystem:
     /// <param name="tileY">Output parameter receiving the tile Y coordinate.</param>
     /// <param name="levelOfDetail">Output parameter receiving the level of detail.</param>
     QuadKeyToTileXY(self, quadKey):
-        tileX = tileY = 0;
+        tileX = tileY = 0
         levelOfDetail = len(quadKey)
         for i in range(levelOfDetail, 0, -1):
             mask = 1 << (i - 1)
