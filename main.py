@@ -1,4 +1,5 @@
 import requests
+from bing_tile import TileSystem
 from PIL import Image
 import sys, io, os
 import json
