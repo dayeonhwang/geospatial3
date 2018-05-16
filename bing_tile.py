@@ -76,8 +76,8 @@ class TileSystem:
         longitude = self.Clip(longitude, self.MinLongitude, self.MaxLongitude)
 
         x = (longitude + 180) / 360
-        sinLatitude = np.Sin(latitude * np.pi / 180)
-        y = 0.5 - np.Log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * np.pi)
+        sinLatitude = np.sin(latitude * np.pi / 180)
+        y = 0.5 - np.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * np.pi)
 
         mapSize = self.MapSize(levelOfDetail)
         pixelX = self.Clip(x * mapSize + 0.5, 0, mapSize - 1)
