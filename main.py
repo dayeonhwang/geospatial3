@@ -72,17 +72,10 @@ if __name__ == '__main__':
             for tx in range(tx1, tx2+1):
                 # print ("Current Tx, Ty", tx, ty)
                 quadKey = t.TileXYToQuadKey(tx, ty, lvl)
-<<<<<<< HEAD
-                img = DownloadImage(imageUrlStr, imageUrlSubdomain, quadKey)
-                if (CheckValidImage(imageUrlStr, imageUrlSubdomain, img)):
-                    img.save('tile{0}{1}.jpeg'.format(tx,ty))
-                    result.paste(img, ((tx-tx1)*256,(ty-ty1)*256))
-=======
                 image = DownloadImage(imageUrlStr, imageUrlSubdomain, quadKey)
                 if (CheckValidImage(imageUrlStr, imageUrlSubdomain, image)):
                     # image.save('tile{0}{1}.jpeg'.format(tx,ty))
                     result.paste(image, ((tx-tx1)*256,(ty-ty1)*256))
->>>>>>> 2ccd8bd241afc30a56f0111442af1bdf68e6fdd8
                 else:
                     print("Invalid tile image at level {0}, tile ({1},{2})".format(lvl,tx,ty))
                     imgError = True
@@ -97,17 +90,6 @@ if __name__ == '__main__':
 
         result.save('raw_result.jpeg')
         # Crop image
-<<<<<<< HEAD
-        tlpx, brpy = t.TileXYToPixelXY(tx1, ty1)
-        print ('tlpx:',tlpx, 'brpy:',brpy)
-        print ('px1, px2, py1, py2',px1, px2, py1, py2)
-        left = px1 - tlpx
-        top = py1 - brpy
-        width = px2-px1
-        height = py2-py1
-        print (left, top, width, height)
-        finalImage = result.crop((left, top, width+left,top+height))
-=======
         tlpx, tlpy = t.TileXYToPixelXY(tx1, ty1)
         left = px1 - tlpx
         top = py1 - tlpy
@@ -115,7 +97,6 @@ if __name__ == '__main__':
         height = py2 - py1
         finalImage = result.crop((left, top ,left+width, top+height))
 
->>>>>>> 2ccd8bd241afc30a56f0111442af1bdf68e6fdd8
         finalImage.save('cropped_result.jpeg')
         finalLvl = lvl
         break
