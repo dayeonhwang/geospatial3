@@ -4,7 +4,6 @@ from bing_tile import TileSystem
 from PIL import Image
 import sys, io, os
 import json
-import pprint
 
 MAXIMGSIZE = 8192*8192
 
@@ -46,7 +45,6 @@ if __name__ == '__main__':
     bingKey = "AuL4N1YXVUkjZYd0uY9LKs4z1TluN-6GAZY9VKEj6zVSP_Q402Dm37QWPiG_0b06"
     r = requests.get(baseUrl+bingKey)
     j = r.json()
-    #pprint.pprint(j)
     imageUrl = j['resourceSets'][0]['resources'][0]['imageUrl']
     imageUrlSubdomain = j['resourceSets'][0]['resources'][0]['imageUrlSubdomains'][0]
     imageUrlStr = re.split('{|}', imageUrl)
@@ -70,11 +68,9 @@ if __name__ == '__main__':
         imgError = False
         for ty in range(ty1, ty2+1):
             for tx in range(tx1, tx2+1):
-                # print ("Current Tx, Ty", tx, ty)
                 quadKey = t.TileXYToQuadKey(tx, ty, lvl)
                 image = DownloadImage(imageUrlStr, imageUrlSubdomain, quadKey)
                 if (CheckValidImage(imageUrlStr, imageUrlSubdomain, image)):
-                    # image.save('tile{0}{1}.jpeg'.format(tx,ty))
                     result.paste(image, ((tx-tx1)*256,(ty-ty1)*256))
                 else:
                     print("Invalid tile image at level {0}, tile ({1},{2})".format(lvl,tx,ty))
