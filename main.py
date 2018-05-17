@@ -81,6 +81,9 @@ if __name__ == '__main__':
         if imgError:
             continue
 
+        if abs(px1 - px2) < 1 or abs(py1 - py2) < 1:
+            print("Cannot find an image for your bounding box")
+
         result.save('raw_result.jpeg')
         # Crop image
         tlpx, tlpy = t.TileXYToPixelXY(tx1, ty1)
